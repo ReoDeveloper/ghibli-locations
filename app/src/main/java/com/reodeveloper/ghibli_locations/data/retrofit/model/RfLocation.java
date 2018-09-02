@@ -72,13 +72,19 @@ public class RfLocation {
         if(size > 1) {
             return size;
         }
+
         // Check if the residents parameter is correctly filled
-        if(size == 1 && !residents.get(0).equals(NO_RESIDENTS)){
-            return size;
+        if(size == 1){
+            String resident = residents.get(0);
+            if(!resident.equals(NO_RESIDENTS)){
+                return size;
+            }
         }
 
-        // This will be 0
-        return size;
+        // This will be reached either because "residents" is empty
+        // or because it has a single value "TODO"
+        // which indicates us that the value is not valid yet, so we assume 0.
+        return 0;
     }
 
     public List<String> getFilms() {

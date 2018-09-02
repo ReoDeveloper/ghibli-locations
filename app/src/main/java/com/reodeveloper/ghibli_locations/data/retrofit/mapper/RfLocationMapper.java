@@ -24,7 +24,12 @@ public class RfLocationMapper extends Mapper<RfLocation, Location> {
             result.setName("");
         }
 
-        result.setClimate(item.getClimate());
+        String climate = item.getClimate();
+        if(climate != null){
+            result.setClimate(climate);
+        }else{
+            result.setClimate("");
+        }
         result.setPopulation(item.getResidentsCount());
         return result;
     }

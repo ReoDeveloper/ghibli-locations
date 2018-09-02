@@ -15,10 +15,10 @@ import static org.junit.Assert.assertEquals;
 public class RfLocationMapperTest {
 
     private final String STRING_EMPTY = "";
+    private final int INT_ZERO = 0;
     private final String STRING_ID = "Some-text-id";
     private final String STRING_NAME = "Name of a place";
     private final String STRING_CLIMATE = "Damn hot";
-    private final String STRING_TERRAIN = "Damn high";
     private final String STRING_SURFACE_WATER = "1337m";
     private final String STRING_URL = "https://some/url/for/test";
     private final String STRING_TODO = "TODO";
@@ -36,12 +36,29 @@ public class RfLocationMapperTest {
 
     RfLocationMapper mapper = new RfLocationMapper();
 
+    @Test public void shouldReturnLocationWithId(){
+        RfLocation given = givenLocationWithId();
+
+        Location test = mapper.map(given);
+
+        assertEquals(STRING_ID.hashCode(), test.getId());
+    }
+
+    @Test public void shouldReturnLocationWithNoId(){
+        RfLocation given = givenEmptyLocation();
+
+        Location test = mapper.map(given);
+
+        assertEquals(INT_ZERO, test.getId());
+    }
+
+
     @Test public void shouldReturnLocationWithCorrectName(){
         RfLocation given = givenLocationWithName();
 
         Location test = mapper.map(given);
 
-        assertEquals(test.getName(), STRING_NAME);
+        assertEquals(STRING_NAME, test.getName());
     }
 
     @Test public void shouldReturnLocationWithNoName(){
@@ -49,7 +66,56 @@ public class RfLocationMapperTest {
 
         Location test = mapper.map(given);
 
-        assertEquals(test.getName(), STRING_EMPTY);
+        assertEquals(STRING_EMPTY, test.getName());
+    }
+
+    @Test public void shouldReturnLocationWithClimate(){
+        RfLocation given = givenLocationWithClimate();
+
+        Location test = mapper.map(given);
+
+        assertEquals(STRING_CLIMATE, test.getClimate());
+    }
+
+    @Test public void shouldReturnLocationWithNoClimate(){
+        RfLocation given = givenEmptyLocation();
+
+        Location test = mapper.map(given);
+
+        assertEquals(STRING_EMPTY, test.getClimate());
+    }
+
+
+    @Test public void shouldReturnLocationWithMultipleResidents(){
+        RfLocation given = givenLocationWithMultipleResidents();
+
+        Location test = mapper.map(given);
+
+        assertEquals(LIST_MULTIPLE_RESIDENTS.size(), test.getPopulation());
+    }
+
+    @Test public void shouldReturnLocationWithSingleResident(){
+        RfLocation given = givenLocationWithOneResident();
+
+        Location test = mapper.map(given);
+
+        assertEquals(LIST_SINGLE_RESIDENT.size(), test.getPopulation());
+    }
+
+    @Test public void shouldReturnLocationWithNoResidents(){
+        RfLocation given = givenLocationWithNoResidents();
+
+        Location test = mapper.map(given);
+
+        assertEquals(INT_ZERO, test.getPopulation());
+    }
+
+    @Test public void shouldReturnLocationWithNoResidentsBecauseTodo(){
+        RfLocation given = givenLocationWithTodoResidents();
+
+        Location test = mapper.map(given);
+
+        assertEquals(INT_ZERO, test.getPopulation());
     }
 
     private RfLocation givenEmptyLocation(){
@@ -71,12 +137,6 @@ public class RfLocationMapperTest {
     private RfLocation givenLocationWithClimate(){
         RfLocation result = new RfLocation();
         result.setClimate(STRING_CLIMATE);
-        return result;
-    }
-
-    private RfLocation givenLocationWithTerrain(){
-        RfLocation result = new RfLocation();
-        result.setTerrain(STRING_TERRAIN);
         return result;
     }
 
@@ -115,7 +175,6 @@ public class RfLocationMapperTest {
         result.setId(STRING_ID);
         result.setName(STRING_NAME);
         result.setClimate(STRING_CLIMATE);
-        result.setTerrain(STRING_TERRAIN);
         result.setSurface_water(STRING_SURFACE_WATER);
         result.setResidents(LIST_MULTIPLE_RESIDENTS);
         result.setFilms(LIST_SINGLE_FILMS);
