@@ -64,6 +64,9 @@ public class RfLocation {
     }
 
     public int getResidentsCount(){
+        if(residents == null){
+            return 0;
+        }
         int size = residents.size();
         // If there is more than 1 element we are sure the parameter is ok
         if(size > 1) {
