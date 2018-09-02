@@ -30,6 +30,14 @@ public class RfLocationMapper extends Mapper<RfLocation, Location> {
         }else{
             result.setClimate("");
         }
+
+        String terrain = item.getTerrain();
+        if(terrain != null){
+            result.setGeography(terrain);
+        }else{
+            result.setGeography("Unknown");
+        }
+
         result.setPopulation(item.getResidentsCount());
         return result;
     }

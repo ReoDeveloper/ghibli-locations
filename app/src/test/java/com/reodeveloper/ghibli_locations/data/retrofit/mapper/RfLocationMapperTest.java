@@ -14,12 +14,13 @@ import static org.junit.Assert.assertEquals;
 
 public class RfLocationMapperTest {
 
-    private final String STRING_EMPTY = "";
     private final int INT_ZERO = 0;
+    private final String STRING_EMPTY = "";
+    private final String STRING_UNKNOWN = "Unknown";
     private final String STRING_ID = "Some-text-id";
     private final String STRING_NAME = "Name of a place";
     private final String STRING_CLIMATE = "Damn hot";
-    private final String STRING_SURFACE_WATER = "1337m";
+    private final String STRING_TERRAIN = "Damn high";
     private final String STRING_URL = "https://some/url/for/test";
     private final String STRING_TODO = "TODO";
 
@@ -28,9 +29,7 @@ public class RfLocationMapperTest {
     private final List<String> LIST_NO_RESIDENTS = new ArrayList<>();
     private final List<String> LIST_TODO_RESIDENTS = Collections.singletonList(STRING_TODO);
 
-    private final List<String> LIST_MULTIPLE_FILMS = Arrays.asList(STRING_URL, STRING_URL, STRING_URL);
     private final List<String> LIST_SINGLE_FILMS = Collections.singletonList(STRING_TODO);
-    private final List<String> LIST_NO_FILMS = new ArrayList<>();
 
     private final List<String> LIST_URL = Collections.singletonList(STRING_URL);
 
@@ -118,6 +117,22 @@ public class RfLocationMapperTest {
         assertEquals(INT_ZERO, test.getPopulation());
     }
 
+    @Test public void shouldReturnLocationWithGeography(){
+        RfLocation given = givenLocationWithTerrain();
+
+        Location test = mapper.map(given);
+
+        assertEquals(STRING_TERRAIN, test.getGeography());
+    }
+
+    @Test public void shouldReturnLocationWithNoGeography(){
+        RfLocation given = givenEmptyLocation();
+
+        Location test = mapper.map(given);
+
+        assertEquals(STRING_UNKNOWN, test.getGeography());
+    }
+
     private RfLocation givenEmptyLocation(){
         return new RfLocation();
     }
@@ -164,9 +179,9 @@ public class RfLocationMapperTest {
         return result;
     }
 
-    private RfLocation givenLocationWithSurfaceWater(){
+    private RfLocation givenLocationWithTerrain(){
         RfLocation result = new RfLocation();
-        result.setSurface_water(STRING_SURFACE_WATER);
+        result.setTerrain(STRING_TERRAIN);
         return result;
     }
 
@@ -175,7 +190,7 @@ public class RfLocationMapperTest {
         result.setId(STRING_ID);
         result.setName(STRING_NAME);
         result.setClimate(STRING_CLIMATE);
-        result.setSurface_water(STRING_SURFACE_WATER);
+        result.setTerrain(STRING_TERRAIN);
         result.setResidents(LIST_MULTIPLE_RESIDENTS);
         result.setFilms(LIST_SINGLE_FILMS);
         result.setUrl(LIST_URL);
