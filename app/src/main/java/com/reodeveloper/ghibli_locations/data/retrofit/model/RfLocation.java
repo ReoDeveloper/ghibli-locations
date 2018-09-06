@@ -83,7 +83,7 @@ public class RfLocation {
 
         // This will be reached either because "residents" is empty
         // or because it has a single value "TODO"
-        // which indicates us that the value is not valid yet, so we assume 0.
+        // which indicates us that the value is not valid yet (from the API side), so we assume 0.
         return 0;
     }
 

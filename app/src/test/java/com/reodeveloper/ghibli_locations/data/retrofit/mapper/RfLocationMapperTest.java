@@ -35,6 +35,18 @@ public class RfLocationMapperTest {
 
     RfLocationMapper mapper = new RfLocationMapper();
 
+    @Test public void shouldReturnCompleteLocation(){
+        RfLocation given = givenLocationComplete();
+
+        Location test = mapper.map(given);
+
+        assertEquals(STRING_ID.hashCode(), test.getId());
+        assertEquals(STRING_NAME, test.getName());
+        assertEquals(STRING_CLIMATE, test.getClimate());
+        assertEquals(LIST_MULTIPLE_RESIDENTS.size(), test.getPopulation());
+        assertEquals(STRING_TERRAIN, test.getGeography());
+    }
+
     @Test public void shouldReturnLocationWithId(){
         RfLocation given = givenLocationWithId();
 

@@ -55,6 +55,7 @@ public class LocationRfDatasource extends RetrofitDatasource implements DataSour
             List<RfLocation> result = callResponse.body();
             return mapper.map(result);
         }
+        // If response is not successful, we return an empty list
         return new ArrayList<>();
     }
 
