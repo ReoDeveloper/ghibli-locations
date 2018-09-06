@@ -7,6 +7,12 @@ Android project for practice.
 ### Main goal
 Create a small app to consume Studio Ghible public API https://ghibliapi.herokuapp.com in order to fetch locations and data about them.
 
+#### Requirements
+* Persistent data in database, if data has been requested previously, use it before calling API again.
+* Show location list, shown info is free.
+* Location detail, shown info is free.
+* Search & filter location.
+
 ### License
 
     Copyright 2018 Reo Developer
