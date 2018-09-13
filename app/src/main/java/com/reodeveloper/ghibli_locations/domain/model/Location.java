@@ -1,4 +1,4 @@
-package com.reodeveloper.ghibli_locations.model;
+package com.reodeveloper.ghibli_locations.domain.model;
 
 public class Location {
     private int id;

@@ -1,10 +1,9 @@
-package com.reodeveloper.common;
+package com.reodeveloper.common.repository;
 
 import java.util.List;
 
 public class Repository<T> {
     private final DataSource<T> datasource;
-
 
     public Repository(DataSource<T> datasource) {
         this.datasource = datasource;

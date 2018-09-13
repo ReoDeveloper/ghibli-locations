@@ -1,4 +1,4 @@
-package com.reodeveloper.common;
+package com.reodeveloper.common.repository;
 
 import java.util.List;
 

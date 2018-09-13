@@ -1,10 +1,10 @@
 package com.reodeveloper.ghibli_locations.data.retrofit;
 
-import com.reodeveloper.common.DataSource;
-import com.reodeveloper.common.Specification;
+import com.reodeveloper.common.repository.DataSource;
+import com.reodeveloper.common.repository.Specification;
 import com.reodeveloper.ghibli_locations.data.Mapper;
 import com.reodeveloper.ghibli_locations.data.retrofit.model.RfLocation;
-import com.reodeveloper.ghibli_locations.model.Location;
+import com.reodeveloper.ghibli_locations.domain.model.Location;
 
 import java.io.IOException;
 import java.util.ArrayList;
