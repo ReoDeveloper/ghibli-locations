@@ -5,7 +5,7 @@
 Android project for practice.
 
 ### Main goal
-Create a small app to consume Studio Ghible public API https://ghibliapi.herokuapp.com in order to fetch locations and data about them.
+Create a small app to consume Studio Ghibli public API https://ghibliapi.herokuapp.com in order to fetch locations and data about them.
 
 #### Requirements
 * Persistent data in database, if data has been requested previously, use it before calling API again.
