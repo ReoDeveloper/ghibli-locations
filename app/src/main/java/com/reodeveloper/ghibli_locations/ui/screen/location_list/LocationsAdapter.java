@@ -8,7 +8,7 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.reodeveloper.ghibli_locations.R;
-import com.reodeveloper.ghibli_locations.model.Location;
+import com.reodeveloper.ghibli_locations.domain.model.Location;
 
 import java.util.List;
 
@@ -17,7 +17,7 @@ public class LocationsAdapter extends RecyclerView.Adapter<LocationsAdapter.View
     private final List<Location> items;
     private final LocationListItemClickListener listener;
 
-    public LocationsAdapter(List<Location> items, LocationListItemClickListener listener) {
+    LocationsAdapter(List<Location> items, LocationListItemClickListener listener) {
         this.items = items;
         this.listener = listener;
     }

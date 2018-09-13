@@ -2,7 +2,7 @@ package com.reodeveloper.ghibli_locations.data.retrofit.mapper;
 
 import com.reodeveloper.ghibli_locations.data.Mapper;
 import com.reodeveloper.ghibli_locations.data.retrofit.model.RfLocation;
-import com.reodeveloper.ghibli_locations.model.Location;
+import com.reodeveloper.ghibli_locations.domain.model.Location;
 
 public class RfLocationMapper extends Mapper<RfLocation, Location> {
 

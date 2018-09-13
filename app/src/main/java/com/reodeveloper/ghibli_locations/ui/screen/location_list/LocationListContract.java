@@ -1,6 +1,6 @@
 package com.reodeveloper.ghibli_locations.ui.screen.location_list;
 
-import com.reodeveloper.ghibli_locations.model.Location;
+import com.reodeveloper.ghibli_locations.domain.model.Location;
 
 import java.util.List;
 
