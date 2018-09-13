@@ -51,6 +51,9 @@ public class LocationsAdapter extends RecyclerView.Adapter<LocationsAdapter.View
         TextView name, climate, terrain;
         ViewHolder(View itemView) {
             super(itemView);
+            name = itemView.findViewById(R.id.txt_name);
+            climate = itemView.findViewById(R.id.txt_climate);
+            terrain = itemView.findViewById(R.id.txt_terrain);
         }
 
         void bind(final Location item, final LocationListItemClickListener listener) {

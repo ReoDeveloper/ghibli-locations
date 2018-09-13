@@ -1,5 +1,7 @@
 package com.reodeveloper.ghibli_locations.ui.screen.location_list;
 
+import android.util.Log;
+
 import com.reodeveloper.common.repository.Repository;
 import com.reodeveloper.common.usecase.Executor;
 import com.reodeveloper.common.usecase.UseCase;
@@ -38,6 +40,6 @@ public class LocationListPresenter implements LocationListContract.Actions {
 
     @Override
     public void onLocationTap(Location item) {
-        //TODO: Go to a detail activity
+        view.showError("Tapped on "+item.getName());
     }
 }
