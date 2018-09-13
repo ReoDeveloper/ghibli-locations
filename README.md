@@ -9,7 +9,7 @@ Create a small app to consume Studio Ghible public API https://ghibliapi.herokua
 
 #### Requirements
 * Persistent data in database, if data has been requested previously, use it before calling API again.
-* Show location list, shown info is free.
+* :ballot_box_with_check: ~~Show location list, shown info is free.~~
 * Location detail, shown info is free.
 * Search & filter location.
 
