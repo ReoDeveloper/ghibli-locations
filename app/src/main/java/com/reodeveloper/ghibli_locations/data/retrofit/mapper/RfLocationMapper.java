@@ -12,9 +12,9 @@ public class RfLocationMapper extends Mapper<RfLocation, Location> {
 
         String id = item.getId();
         if(id != null){
-            result.setId(id.hashCode());
+            result.setId(id);
         }else{
-            result.setId(0);
+            result.setId("Unknown");
         }
 
         String name = item.getName();

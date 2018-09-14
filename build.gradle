@@ -2,12 +2,6 @@
 
 buildscript {
 
-    ext {
-        supportLibrary = '27.1.1'
-        picasso = '2.71828'
-        retrofit = '2.4.0'
-    }
-
     repositories {
         google()
         jcenter()
@@ -30,4 +24,12 @@ allprojects {
 
 task clean(type: Delete) {
     delete rootProject.buildDir
+}
+
+ext {
+    supportLibrary = '27.1.1'
+    picasso = '2.71828'
+    retrofit = '2.4.0'
+    archLifecycleVersion = '1.1.1'
+    archRoomVersion = '1.1.1'
 }
