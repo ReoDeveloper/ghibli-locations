@@ -43,6 +43,11 @@ public class LocationRfDatasource extends RetrofitDatasource implements DataSour
     }
 
     @Override
+    public void store(List<Location> items) {
+        throw new UnsupportedOperationException("This Datasource has no storing capabilities");
+    }
+
+    @Override
     public List<Location> getAll() {
         Call<List<RfLocation>> call = service.getAllLocations();
         Response<List<RfLocation>> callResponse = null;

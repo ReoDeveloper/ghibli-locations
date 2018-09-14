@@ -44,4 +44,10 @@ dependencies {
     // Retrofit - Debugging tools
     implementation "com.squareup.okhttp3:logging-interceptor:3.10.0"
 
+    // Room - persistence
+    implementation "android.arch.lifecycle:extensions:$archLifecycleVersion"
+    implementation "android.arch.persistence.room:runtime:$archRoomVersion"
+    annotationProcessor "android.arch.lifecycle:compiler:$archLifecycleVersion"
+    annotationProcessor "android.arch.persistence.room:compiler:$archRoomVersion"
+
 }

@@ -21,7 +21,7 @@ public class LocationListActivity extends AppCompatActivity implements LocationL
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         recyclerView = findViewById(R.id.recyclerView);
-        presenter = new LocationListPresenter(this);
+        presenter = new LocationListPresenter(this, this);
         setupRecyclerView();
 
         // We are ready to start

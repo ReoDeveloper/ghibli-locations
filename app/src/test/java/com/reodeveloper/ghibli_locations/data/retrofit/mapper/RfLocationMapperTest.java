@@ -40,7 +40,7 @@ public class RfLocationMapperTest {
 
         Location test = mapper.map(given);
 
-        assertEquals(STRING_ID.hashCode(), test.getId());
+        assertEquals(STRING_ID, test.getId());
         assertEquals(STRING_NAME, test.getName());
         assertEquals(STRING_CLIMATE, test.getClimate());
         assertEquals(LIST_MULTIPLE_RESIDENTS.size(), test.getPopulation());
@@ -52,7 +52,7 @@ public class RfLocationMapperTest {
 
         Location test = mapper.map(given);
 
-        assertEquals(STRING_ID.hashCode(), test.getId());
+        assertEquals(STRING_ID, test.getId());
     }
 
     @Test public void shouldReturnLocationWithNoId(){
@@ -60,7 +60,7 @@ public class RfLocationMapperTest {
 
         Location test = mapper.map(given);
 
-        assertEquals(INT_ZERO, test.getId());
+        assertEquals(STRING_UNKNOWN, test.getId());
     }
 
 
