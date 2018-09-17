@@ -5,16 +5,20 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Filter;
+import android.widget.Filterable;
 import android.widget.TextView;
 
 import com.reodeveloper.ghibli_locations.R;
 import com.reodeveloper.ghibli_locations.domain.model.Location;
 
+import java.util.ArrayList;
 import java.util.List;
 
-public class LocationsAdapter extends RecyclerView.Adapter<LocationsAdapter.ViewHolder> {
+public class LocationsAdapter extends RecyclerView.Adapter<LocationsAdapter.ViewHolder> implements Filterable {
 
     private final List<Location> items;
+    private List<Location> itemsFiltered;
     private final LocationListItemClickListener listener;
 
     LocationsAdapter(List<Location> items, LocationListItemClickListener listener) {
@@ -41,6 +45,42 @@ public class LocationsAdapter extends RecyclerView.Adapter<LocationsAdapter.View
     @Override
     public int getItemCount() {
         return items.size();
+    }
+
+    @Override
+    public Filter getFilter() {
+        return new Filter() {
+            @Override
+            protected FilterResults performFiltering(CharSequence charSequence) {
+                String searchText = (String) charSequence;
+                if(searchText.isEmpty()){
+                    itemsFiltered = items;
+                }else{
+                    for(Location item : items){
+                        if(item.getName().toLowerCase().contains(searchText.toLowerCase())){
+                            itemsFiltered.add(item);
+                        }
+                    }
+                }
+                FilterResults filterResults = new FilterResults();
+                filterResults.values = itemsFiltered;
+                return filterResults;
+            }
+
+            @Override
+            protected void publishResults(CharSequence charSequence, FilterResults filterResults) {
+                List<Location> result = new ArrayList<>();
+                if(filterResults.values instanceof List){
+                    for(Object item : (List<?>)filterResults.values){
+                        if(item instanceof Location){
+                            result.add((Location) item);
+                        }
+                    }
+                }
+                itemsFiltered = result;
+                notifyDataSetChanged();
+            }
+        };
     }
 
     interface LocationListItemClickListener {
